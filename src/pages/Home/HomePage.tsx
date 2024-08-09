@@ -1,5 +1,6 @@
 import { Carousel, Header, Sidebar } from "../../components"
 import styles from './Home.module.scss'
+import { AuthPage } from "../Auth/AuthPage"
 
 export const HomePage = () => {
   return (
@@ -18,9 +19,7 @@ export const HomePage = () => {
         </main>
       </section>
 
-      {/* main */}
-
-      {/* Footer */}
+      <AuthPage />
     </>
   )
 }

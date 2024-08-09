@@ -1,0 +1,99 @@
+@import '../../index.scss';
+
+.backdrop-page {
+  position: absolute;
+  top: 84px;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.page-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  max-width: 1200px;
+  height: 600px;
+  background-color: #ffffff03;
+  border: 1px solid #71717190;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  z-index: 9;
+  padding: 15px;
+}
+
+.btn-close-auth {
+  @include inter-font(500, normal, 15px);
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.form-container {
+  flex: 1;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 450px;
+    flex-shrink: 0;
+  }
+
+  input {
+    @include inter-font(500, normal, 15px);
+    background-color: #fff;
+    color: $gray-300;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .form-legend {
+    @include inter-font(400, normal, 15px);
+    color: $text-white;
+    flex-shrink: 0;
+    margin-bottom: 50px;
+  }
+}
+
+.form-switch {
+  background-color: $gray-400;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 100px;
+
+  .active {
+    background-color: $secondary-color;
+  }
+}
+
+.form-switch > button,
+.btn-submit {
+  @include inter-font(800, normal, 15px);
+  padding: 15px 25px;
+  background-color: transparent;
+  color: $text-white;
+  border-radius: 12px;
+  border: none;
+}
+
+.btn-submit {
+  background-color: $secondary-color;
+  width: fit-content;
+  cursor: pointer;
+}
