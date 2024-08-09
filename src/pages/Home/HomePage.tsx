@@ -1,4 +1,4 @@
-import { Header, Sidebar } from "../../components"
+import { Carousel, Header, Sidebar } from "../../components"
 import styles from './Home.module.scss'
 
 export const HomePage = () => {
@@ -13,7 +13,9 @@ export const HomePage = () => {
         <Sidebar />
 
         {/* main */}
-        <main></main>
+        <main>
+          <Carousel titleSection="Popular" />
+        </main>
       </section>
 
       {/* main */}

@@ -1,0 +1,6 @@
+@import '../../index.scss';
+
+.title-section {
+  @include ibm-plex-sans(800, normal, 24px);
+  margin-bottom: 20px;
+}

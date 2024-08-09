@@ -1,2 +1,7 @@
 export * from './Header/Header'
 export * from './Sidebar/Sidebar'
+export * from './Carousel/Carousel'
+export * from './CardMovie/CardMovie'
+export * from './LikeButton/LikeButton'
+export * from './SaveButton/SaveButton'
+export * from './CircularRating/CircularRating'
