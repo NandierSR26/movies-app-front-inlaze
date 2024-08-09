@@ -2,6 +2,8 @@ import { Carousel, Header, Sidebar } from "../../components"
 import styles from './Home.module.scss'
 import { AuthPage } from "../Auth/AuthPage"
 
+const authformActive = false
+
 export const HomePage = () => {
   return (
     <>
@@ -19,7 +21,7 @@ export const HomePage = () => {
         </main>
       </section>
 
-      <AuthPage />
+      <AuthPage authformActive={authformActive} />
     </>
   )
 }

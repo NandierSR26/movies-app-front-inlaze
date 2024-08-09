@@ -5,12 +5,16 @@ import { LoginForm } from './LoginForm'
 import backIcon from '/assets/left-arrow-circle-icon.svg'
 import { RegisterForm } from './RegisterForm'
 
-export const AuthPage = () => {
+interface Props {
+  authformActive: boolean;
+}
+
+export const AuthPage = ({ authformActive }: Props) => {
 
   const [isSelected, setIsSelected] = useState<"login" | "signup">('signup')
 
   return (
-    <main className={styles["backdrop-page"]}>
+    <main className={styles["backdrop-page"]} style={{ display: authformActive ? 'flex' : 'none' }}>
       <section className={styles["page-container"]}>
 
         <div className={styles["btn-close-auth"]}>
