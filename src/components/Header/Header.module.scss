@@ -1,0 +1,53 @@
+@import '../../index.scss';
+
+.header {
+  background-color: $primary-color;
+  padding: 13.5px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+
+  figure {
+    width: 134px;
+  }
+
+  figure > img {
+    width: 100%;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+
+    .menu-items {
+      list-style: none;
+
+      a {
+        @include inter-font(500, 'normal')
+      }
+    }
+  }
+
+  .header-options{
+    padding: 0 20px;
+
+    button {
+      @include inter-font(600, 'normal', 16px);
+      background-color: $secondary-color;
+      color: $primary-color;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+  }
+}
