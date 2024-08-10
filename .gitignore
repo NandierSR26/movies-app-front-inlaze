@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .env
+/src/**/*.module.css
+/src/**/*.css
+/src/**/*.css.map
+/src/**/*.module.css.map
