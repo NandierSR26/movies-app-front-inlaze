@@ -91,9 +91,9 @@ export const HomePage = () => {
                     </div>
 
                     <div className={styles.options}>
-                      <LikeButton style={{ width: '35px', height: '35px' }} />
-                      <SaveButton style={{ width: '35px', height: '35px' }} />
-                      <img src={shareIcon} alt="share-icon" style={{ width: '35px', height: '35px' }} />
+                      <LikeButton style={{ width: '30px', height: '30px' }} />
+                      <SaveButton style={{ width: '30px', height: '30px' }} />
+                      <img src={shareIcon} alt="share-icon" style={{ width: '30px', height: '30px' }} />
                     </div>
                   </div>
 
