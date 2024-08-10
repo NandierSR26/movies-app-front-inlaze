@@ -13,7 +13,7 @@ export const CardMovie = ({ movie }: Props) => {
     <div className={styles["card"]}>
       <figure>
         <img
-          src={`${import.meta.env.VITE_TMDB_URL_IMAGES}/w200${movie.poster_path}`}
+          src={`${import.meta.env.VITE_TMDB_URL_IMAGES}/original${movie.poster_path}`}
           alt="image"
         />
       </figure>

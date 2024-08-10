@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { IMovie, IShortMovie } from "../interfaces";
+import { IMovie, IMoviesByPopularity, IMoviesNow, IMoviesRated, IMoviesUpcoming, IShortMovie } from "../interfaces";
 import MoviesService from "../services/movies.service";
 
 interface IMoviescontextProps {
   // properties
   isMoviesfetching: boolean;
-  moviesByPopularity: IShortMovie[];
-  moviesByRating: IShortMovie[];
-  moviesByNowPlaying: IShortMovie[];
-  moviesByUpcoming: IShortMovie[];
+  moviesByPopularity: IMoviesByPopularity | null;
+  moviesByRating: IMoviesRated | null;
+  moviesByNowPlaying: IMoviesNow | null;
+  moviesByUpcoming: IMoviesUpcoming | null;
   moviesByID: IMovie | null;
 
   // methods
@@ -25,30 +25,30 @@ export const MoviesProvider = (props: { children: JSX.Element }): JSX.Element =>
 
   const [isMoviesfetching, setIsMoviesfetching] = useState<boolean>(true)
 
-  const [moviesByPopularity, setMoviesByPopularity] = useState<IShortMovie[]>([])
-  const [moviesByRating, setMoviesByRating] = useState<IShortMovie[]>([])
-  const [moviesByNowPlaying, setMoviesByNowPlaying] = useState<IShortMovie[]>([])
-  const [moviesByUpcoming, setMoviesByUpcoming] = useState<IShortMovie[]>([])
+  const [moviesByPopularity, setMoviesByPopularity] = useState<IMoviesByPopularity | null>(null)
+  const [moviesByRating, setMoviesByRating] = useState<IMoviesRated | null>(null)
+  const [moviesByNowPlaying, setMoviesByNowPlaying] = useState<IMoviesNow | null>(null)
+  const [moviesByUpcoming, setMoviesByUpcoming] = useState<IMoviesUpcoming | null>(null)
   const [moviesByID, setMoviesByID] = useState<IMovie | null>(null)
 
   const getMoviesByPopularity = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByPopularity()
-    setMoviesByPopularity(movies.results)
+    setMoviesByPopularity(movies)
   }
 
   const getMoviesByRating = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByRating()
-    setMoviesByRating(movies.results)
+    setMoviesByRating(movies)
   }
 
   const getMoviesByNowPlaying = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByNowPlaying()
-    setMoviesByNowPlaying(movies.results)
+    setMoviesByNowPlaying(movies)
   }
 
   const getMoviesByUpcoming = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByUpcoming()
-    setMoviesByUpcoming(movies.results)
+    setMoviesByUpcoming(movies)
   }
 
   const getMovieByID = async (id: string): Promise<void> => {

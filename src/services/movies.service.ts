@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IMovie, IMoviesByPopularity, IMoviesNow, IMoviesRated, IMoviesUpcoming } from "../interfaces";
+import { BackdropImages, IMovie, IMoviesByPopularity, IMoviesNow, IMoviesRated, IMoviesUpcoming } from "../interfaces";
 
 export class MoviesService {
   public async getMoviesByPopularity() {
@@ -29,6 +29,12 @@ export class MoviesService {
   public async getMovieByID(id: string) {
     const url = `${import.meta.env.VITE_TMDB_API_BASE_URL}/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     const { data } = await axios.get<IMovie>(url);
+    return data
+  }
+
+  public async getMovieImages(id: number) {
+    const url = `${import.meta.env.VITE_MOVIES_APP_API_BASE_URL}/movies/images/${ id }`
+    const data = await axios.get<BackdropImages>(url)
     return data
   }
 

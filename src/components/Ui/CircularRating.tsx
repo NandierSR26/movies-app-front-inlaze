@@ -1,14 +1,13 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import styles from './ui.module.scss'
 import { useCallback } from "react";
+import { formatRating } from "../../utils/utils";
 
 interface Props {
   rating: number;
 }
 
 export const CircularRating = ({ rating }: Props) => {
-
-  const formatRating = useCallback((rating: number) => (rating*10).toFixed(0), [rating])
 
   return (
     <div className={`${styles.stat} ${styles.progress}`}>

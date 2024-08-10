@@ -1,12 +1,17 @@
 import styles from './ui.module.scss'
 import likeIcon from '/assets/like-icon.svg'
 
-export const LikeButton = () => {
+interface Props {
+  label?: string;
+  style?: React.CSSProperties;
+}
+
+export const LikeButton = ({ label, style }: Props) => {
   return (
     <div className={styles.stat}>
-      <span>favorite</span>
+      {label && <span>{ label }</span>}
 
-      <div>
+      <div style={style}>
         <img src={likeIcon} alt="like-icon" />
       </div>
     </div>

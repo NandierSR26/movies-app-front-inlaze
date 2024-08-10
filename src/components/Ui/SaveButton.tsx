@@ -1,12 +1,17 @@
 import saveIcon from '/assets/book-check.svg'
 import styles from './ui.module.scss'
 
-export const SaveButton = () => {
+interface Props {
+  label?: string;
+  style?: React.CSSProperties;
+}
+
+export const SaveButton = ({ label, style }: Props) => {
   return (
     <div className={styles.stat}>
-      <span>save</span>
+      { label && <span>{ label }</span> }
 
-      <div>
+      <div style={style}>
         <img src={saveIcon} alt="save-icon" />
       </div>
     </div>

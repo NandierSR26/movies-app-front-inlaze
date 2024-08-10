@@ -23,3 +23,32 @@ body {
 option:hover {
   background-color: $primary-color !important;
 }
+
+.swiper-pagination {
+  text-align: center;
+  padding-top: 10px;
+  position: absolute;
+  bottom: 20px;
+  z-index: 999;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: $gray-200;
+  border-radius: 50%;
+  margin: 0 5px;
+  display: inline-block;
+  transition: background-color 0.3s, opacity 0.3s;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $secondary-color;
+  width: 30px;
+  border-radius: 10px;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  font-family: "Inter", sans-serif;
+}

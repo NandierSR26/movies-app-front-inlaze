@@ -45,6 +45,14 @@ export interface IShortMovie {
   vote_count: number;
 }
 
+export interface BackdropImages {
+  id:        string;
+  file_path: string;
+  width:     number;
+  height:    number;
+}
+
+
 export interface BelongsToCollection {
   id: number;
   name: string;
