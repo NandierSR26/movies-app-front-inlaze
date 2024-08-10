@@ -26,8 +26,8 @@ export const HomePage = () => {
         <main>
           <Carousel titleSection="Popular" carouselItems={moviesByPopularity} />
           <Carousel titleSection="Now Playing" carouselItems={moviesByNowPlaying} />
-          <Carousel titleSection="Popular" carouselItems={moviesByRating} />
-          <Carousel titleSection="Popular" carouselItems={moviesByUpcoming} />
+          <Carousel titleSection="Upcoming" carouselItems={moviesByUpcoming} />
+          <Carousel titleSection="Top Rated" carouselItems={moviesByRating} />
         </main>
       </section>
 
