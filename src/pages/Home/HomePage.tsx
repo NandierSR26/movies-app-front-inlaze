@@ -1,8 +1,8 @@
 import { Carousel, Header, Sidebar } from "../../components"
-import styles from './Home.module.scss'
 import { AuthPage } from "../Auth/AuthPage"
-import { useEffect } from "react"
 import { useMoviesContext } from "../../context/MoviesProvider"
+
+import styles from './Home.module.scss'
 
 const authformActive = false
 
@@ -18,6 +18,11 @@ export const HomePage = () => {
       <Header />
 
       {/* Banner */}
+      <section className={styles.banner}>
+
+      </section>
+
+
       <section className={styles["main-section"]}>
         {/* sidebar */}
         <Sidebar />
