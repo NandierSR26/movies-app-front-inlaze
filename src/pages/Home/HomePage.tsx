@@ -8,11 +8,9 @@ const authformActive = false
 
 export const HomePage = () => {
 
-  const { getMoviesByPopularity, moviesByPopularity } = useMoviesContext()
+  const { moviesByPopularity, moviesByNowPlaying, moviesByRating, moviesByUpcoming, isMoviesfetching  } = useMoviesContext()
 
-  useEffect(() => {
-    getMoviesByPopularity()
-  }, [])
+  if(isMoviesfetching) return <h1>Cargando ...</h1>
 
   return (
     <>
@@ -27,6 +25,9 @@ export const HomePage = () => {
         {/* main */}
         <main>
           <Carousel titleSection="Popular" carouselItems={moviesByPopularity} />
+          <Carousel titleSection="Now Playing" carouselItems={moviesByNowPlaying} />
+          <Carousel titleSection="Popular" carouselItems={moviesByRating} />
+          <Carousel titleSection="Popular" carouselItems={moviesByUpcoming} />
         </main>
       </section>
 

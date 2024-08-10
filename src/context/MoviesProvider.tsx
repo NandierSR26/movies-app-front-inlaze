@@ -1,9 +1,10 @@
-import { createContext, useContext, useState } from "react";
-import { IMoviesByPopularity, IMoviesRated, IMoviesNow, IMoviesUpcoming, IMovie, IShortMovie } from "../interfaces";
+import { createContext, useContext, useEffect, useState } from "react";
+import { IMovie, IShortMovie } from "../interfaces";
 import MoviesService from "../services/movies.service";
 
 interface IMoviescontextProps {
   // properties
+  isMoviesfetching: boolean;
   moviesByPopularity: IShortMovie[];
   moviesByRating: IShortMovie[];
   moviesByNowPlaying: IShortMovie[];
@@ -21,6 +22,8 @@ interface IMoviescontextProps {
 export const MoviesContext = createContext({} as IMoviescontextProps)
 
 export const MoviesProvider = (props: { children: JSX.Element }): JSX.Element => {
+
+  const [isMoviesfetching, setIsMoviesfetching] = useState<boolean>(true)
 
   const [moviesByPopularity, setMoviesByPopularity] = useState<IShortMovie[]>([])
   const [moviesByRating, setMoviesByRating] = useState<IShortMovie[]>([])
@@ -53,9 +56,21 @@ export const MoviesProvider = (props: { children: JSX.Element }): JSX.Element =>
     setMoviesByID(movie)
   }
 
+  useEffect(() => {
+    const requests = [
+      getMoviesByPopularity(),
+      getMoviesByRating(),
+      getMoviesByNowPlaying(),
+      getMoviesByUpcoming()
+    ]
+
+    Promise.all(requests).then(() => setIsMoviesfetching(false))
+  }, [])
+
   return (
     <MoviesContext.Provider value={{
       // properties
+      isMoviesfetching,
       moviesByPopularity,
       moviesByRating,
       moviesByNowPlaying,
