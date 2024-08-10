@@ -17,8 +17,8 @@ const upcomingPage = lazy(() => import("../pages/Movies/UpcomingPage"));
 
 export const routes: Route[] = [
   {
-    to: "/",
-    path: "",
+    to: "/home",
+    path: "home",
     Component: HomePage,
     name: "Home",
   },

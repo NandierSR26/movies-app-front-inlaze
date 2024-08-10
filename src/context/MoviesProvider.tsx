@@ -1,71 +1,77 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { IMovie, IMoviesByPopularity, IMoviesNow, IMoviesRated, IMoviesUpcoming, IShortMovie } from "../interfaces";
 import MoviesService from "../services/movies.service";
+import moviesService from "../services/movies.service";
 
 interface IMoviescontextProps {
   // properties
   isMoviesfetching: boolean;
-  moviesByPopularity: IMoviesByPopularity | null;
-  moviesByRating: IMoviesRated | null;
-  moviesByNowPlaying: IMoviesNow | null;
-  moviesByUpcoming: IMoviesUpcoming | null;
+  moviesByPopularity: IShortMovie[];
+  moviesByRating: IShortMovie[];
+  moviesByNowPlaying: IShortMovie[];
+  moviesByUpcoming: IShortMovie[];
   moviesByID: IMovie | null;
+  page: number;
+  // hasMore: boolean;
 
   // methods
-  getMoviesByPopularity: () => Promise<void>,
-  getMoviesByRating: () => Promise<void>,
-  getMoviesByNowPlaying: () => Promise<void>,
-  getMoviesByUpcoming: () => Promise<void>,
-  getMovieByID: (id: string) => Promise<void>
+  getMoviesByPopularity: () => Promise<void>;
+  getMoviesByRating: () => Promise<void>;
+  getMoviesByNowPlaying: () => Promise<void>;
+  getMoviesByUpcoming: () => Promise<void>;
+  getMovieByID: (id: string) => Promise<void>;
+  setIsMoviesfetching: React.Dispatch<React.SetStateAction<boolean>>
+  // resetPage: () => void;
+
 }
 
 export const MoviesContext = createContext({} as IMoviescontextProps)
 
 export const MoviesProvider = (props: { children: JSX.Element }): JSX.Element => {
 
-  const [isMoviesfetching, setIsMoviesfetching] = useState<boolean>(true)
+  const [isMoviesfetching, setIsMoviesfetching] = useState<boolean>(false)
 
-  const [moviesByPopularity, setMoviesByPopularity] = useState<IMoviesByPopularity | null>(null)
-  const [moviesByRating, setMoviesByRating] = useState<IMoviesRated | null>(null)
-  const [moviesByNowPlaying, setMoviesByNowPlaying] = useState<IMoviesNow | null>(null)
-  const [moviesByUpcoming, setMoviesByUpcoming] = useState<IMoviesUpcoming | null>(null)
+  const [moviesByPopularity, setMoviesByPopularity] = useState<IShortMovie[]>([])
+  const [moviesByRating, setMoviesByRating] = useState<IShortMovie[]>([])
+  const [moviesByNowPlaying, setMoviesByNowPlaying] = useState<IShortMovie[]>([])
+  const [moviesByUpcoming, setMoviesByUpcoming] = useState<IShortMovie[]>([])
   const [moviesByID, setMoviesByID] = useState<IMovie | null>(null)
 
-  const getMoviesByPopularity = async (): Promise<void> => {
+  const [page, setPage] = useState(1)
+
+  const getMoviesByPopularity = useCallback(async (): Promise<void> => {
+    console.log('getMoviesByPopularity')
     const movies = await MoviesService.getMoviesByPopularity()
-    setMoviesByPopularity(movies)
-  }
+
+    setMoviesByPopularity(movies.results)
+    setPage((prevPage) => prevPage+1)
+  }, [moviesService, setMoviesByPopularity])
 
   const getMoviesByRating = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByRating()
-    setMoviesByRating(movies)
+    // setMoviesByRating((prevMovies) => [...prevMovies, ...movies.results])
+    setMoviesByRating(movies.results)
+
   }
 
   const getMoviesByNowPlaying = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByNowPlaying()
-    setMoviesByNowPlaying(movies)
+    // setMoviesByNowPlaying((prevMovies) => [...prevMovies, ...movies.results])
+    setMoviesByNowPlaying(movies.results)
+
   }
 
   const getMoviesByUpcoming = async (): Promise<void> => {
     const movies = await MoviesService.getMoviesByUpcoming()
-    setMoviesByUpcoming(movies)
+    // setMoviesByUpcoming((prevMovies) => [...prevMovies, ...movies.results])
+    setMoviesByUpcoming(movies.results)
+
   }
 
   const getMovieByID = async (id: string): Promise<void> => {
     const movie = await MoviesService.getMovieByID(id)
     setMoviesByID(movie)
   }
-
-  useEffect(() => {
-    const requests = [
-      getMoviesByPopularity(),
-      getMoviesByRating(),
-      getMoviesByNowPlaying(),
-      getMoviesByUpcoming()
-    ]
-
-    Promise.all(requests).then(() => setIsMoviesfetching(false))
-  }, [])
 
   return (
     <MoviesContext.Provider value={{
@@ -76,6 +82,8 @@ export const MoviesProvider = (props: { children: JSX.Element }): JSX.Element =>
       moviesByNowPlaying,
       moviesByUpcoming,
       moviesByID,
+      page,
+      // hasMore,
 
       // methods
       getMoviesByPopularity,
@@ -83,6 +91,8 @@ export const MoviesProvider = (props: { children: JSX.Element }): JSX.Element =>
       getMoviesByNowPlaying,
       getMoviesByUpcoming,
       getMovieByID,
+      setIsMoviesfetching
+      // resetPage
     }}>
       {props.children}
     </MoviesContext.Provider>

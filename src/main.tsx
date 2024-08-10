@@ -18,5 +18,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <App />
       </MoviesProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

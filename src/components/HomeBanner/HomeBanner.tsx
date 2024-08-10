@@ -1,32 +1,30 @@
-import { IMoviesByPopularity } from "../../interfaces"
+import { IShortMovie } from "../../interfaces"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination } from "swiper/modules"
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar"
 import { formatRating } from "../../utils/utils"
+import { useMoviesContext } from "../../context/MoviesProvider"
 import shareIcon from '/assets/share-icon-2.svg'
 
 import styles from './HomeBanner.module.scss'
 import { LikeButton } from "../Ui/LikeButton"
 import { SaveButton } from "../Ui/SaveButton"
 
-interface Props {
-  moviesByPopularity: IMoviesByPopularity;
-}
+export const HomeBanner = () => {
 
-export const HomeBanner = ({ moviesByPopularity }: Props) => {
+  const { moviesByPopularity } = useMoviesContext()
+
   return (
     <section className={styles.banner}>
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={0}
         slidesPerView={1}
-        loop={true}
-        // autoplay={{
-        //   delay: 5000,
-        // }}
-        pagination={{
-          clickable: true
+        loop={moviesByPopularity.length > 1}
+        autoplay={{
+          delay: 5000,
         }}
+        pagination={{}}
         style={{
           height: '100%',
           position: 'relative',
@@ -35,7 +33,7 @@ export const HomeBanner = ({ moviesByPopularity }: Props) => {
         }}
       >
         {
-          moviesByPopularity!.results.slice(0, 7).map((movie) => (
+          moviesByPopularity.slice(0, 7).map((movie) => (
             <SwiperSlide
               key={movie.id}
             >

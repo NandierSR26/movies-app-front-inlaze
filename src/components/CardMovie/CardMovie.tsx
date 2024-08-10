@@ -30,8 +30,8 @@ export const CardMovie = ({ movie }: Props) => {
 
         <section className={styles["movie-stats"]}>
           <CircularRating rating={movie.vote_average} />
-          <LikeButton />
-          <SaveButton />
+          <LikeButton label="Favorites" />
+          <SaveButton label="Save" />
         </section>
       </div>
     </div>
