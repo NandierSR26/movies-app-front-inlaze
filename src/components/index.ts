@@ -8,3 +8,4 @@ export * from "./Ui/CircularRating";
 export * from "./AuthBanners/Banner1";
 export * from "./AuthBanners/Banner2";
 export * from "./HomeBanner/HomeBanner";
+export * from "./Layouts/MainLayout";

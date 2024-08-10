@@ -1,9 +1,5 @@
-import { Carousel, Header, HomeBanner, Sidebar } from "../../components"
-import { AuthPage } from "../Auth/AuthPage"
+import { Carousel, MainLayout } from "../../components"
 import { useMoviesContext } from "../../context/MoviesProvider"
-
-import styles from './Home.module.scss'
-
 
 export const HomePage = () => {
 
@@ -13,26 +9,15 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* Header */}
-      <Header />
-
-      {/* Banner */}
-      <HomeBanner moviesByPopularity={moviesByPopularity!} />
-
-      <section className={styles["main-section"]}>
-        {/* sidebar */}
-        <Sidebar />
-
-        {/* main */}
-        <main>
+     <MainLayout moviesByPopularity={moviesByPopularity!}>
+      {/* main */}
+      <main>
           <Carousel titleSection="Popular" carouselItems={moviesByPopularity!.results} />
           <Carousel titleSection="Now Playing" carouselItems={moviesByNowPlaying!.results} />
           <Carousel titleSection="Upcoming" carouselItems={moviesByUpcoming!.results} />
           <Carousel titleSection="Top Rated" carouselItems={moviesByRating!.results} />
         </main>
-      </section>
-
-      <AuthPage authformActive={false} />
+     </MainLayout>
     </>
   )
 }

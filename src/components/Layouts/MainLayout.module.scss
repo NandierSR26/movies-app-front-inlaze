@@ -1,0 +1,13 @@
+@import "../../index.scss";
+
+.main-section {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+  main {
+    flex: 1;
+    padding: 30px;
+    overflow: hidden;
+  }
+}
