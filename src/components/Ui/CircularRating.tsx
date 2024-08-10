@@ -1,5 +1,5 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
-import styles from './CircularRating.module.scss'
+import styles from './ui.module.scss'
 
 export const CircularRating = () => {
   return (
@@ -12,7 +12,7 @@ export const CircularRating = () => {
           maxValue={1}
           text={`${(0.6 * 100)}%`}
           styles={buildStyles({
-            textSize: '39px',
+            textSize: '40px',
           })}
         />
       </div>

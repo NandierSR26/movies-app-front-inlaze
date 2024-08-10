@@ -1,5 +1,5 @@
 import saveIcon from '/assets/book-check.svg'
-import styles from './SaveButton.module.scss'
+import styles from './ui.module.scss'
 
 export const SaveButton = () => {
   return (

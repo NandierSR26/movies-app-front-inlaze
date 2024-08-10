@@ -1,4 +1,4 @@
-import styles from './LikeButton.module.scss'
+import styles from './ui.module.scss'
 import likeIcon from '/assets/like-icon.svg'
 
 export const LikeButton = () => {

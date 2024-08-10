@@ -1,16 +1,26 @@
 import styles from "./CardMovie.module.scss"
-import { CircularRating } from "../CircularRating/CircularRating"
-import { LikeButton } from "../LikeButton/LikeButton"
-import { SaveButton } from "../SaveButton/SaveButton"
+import { CircularRating } from "../Ui/CircularRating"
+import { LikeButton } from "../Ui/LikeButton"
+import { SaveButton } from "../Ui/SaveButton"
+import { IShortMovie } from "../../interfaces"
 
-export const CardMovie = () => {
+interface Props {
+  movie: IShortMovie;
+}
+
+export const CardMovie = ({ movie }: Props) => {
   return (
     <div className={styles["card"]}>
-      <img src="https://placehold.co/250x300" alt="image" />
+      <figure>
+        <img
+          src={`${import.meta.env.VITE_TMDB_URL_IMAGES}/w200${movie.poster_path}`}
+          alt="image"
+        />
+      </figure>
 
       <div className={styles["card-body"]}>
-        <h4>Title</h4>
-        <p>date test</p>
+        <h4>{movie.original_title}</h4>
+        <p>{movie.release_date}</p>
 
         <section className={styles["movie-stats"]}>
           <CircularRating />
