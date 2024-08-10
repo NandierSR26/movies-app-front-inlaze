@@ -1,0 +1,108 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #454545;
+  color: #FFFFFF;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+option:hover {
+  background-color: #000000 !important;
+}
+
+.sidebar {
+  width: auto;
+  max-width: 300px;
+  background-color: #262626;
+  flex: 1;
+  padding: 16px;
+}
+.sidebar form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 25px;
+  width: 100%;
+}
+
+.input-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.input-main-container .input-label {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: 16px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.input-main-container .input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+  background-color: #1C1C1C;
+  border-bottom: 1px solid #717171;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  padding-right: 20px;
+}
+.input-main-container .input-container input {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  background-color: transparent;
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 15px;
+  min-width: 0;
+}
+.input-main-container .input-container select {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  background-color: transparent;
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 15px;
+  min-width: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #FFFFFF;
+}
+.input-main-container .input-container select option {
+  background-color: #1C1C1C;
+  color: #FFFFFF;
+}
+.input-main-container .input-container .input-icon {
+  width: 16px;
+  height: 16px;
+}
+.input-main-container .input-container .input-icon img {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=Sidebar.module.css.map */

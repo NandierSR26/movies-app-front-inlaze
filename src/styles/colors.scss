@@ -13,3 +13,10 @@ $rate-success: #4DA14F;
 $rate-negative: #E54545;
 $rate-medium: #FF8800;
 
+$rate-success-light: lighten($rate-success, 40%);
+$rate-negative-light: lighten($rate-negative, 40%);
+$rate-medium-light: lighten($rate-medium, 40%);
+
+@warn $rate-success-light;
+@warn $rate-negative-light;
+@warn $rate-medium-light;

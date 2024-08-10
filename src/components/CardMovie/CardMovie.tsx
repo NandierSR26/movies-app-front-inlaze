@@ -19,11 +19,17 @@ export const CardMovie = ({ movie }: Props) => {
       </figure>
 
       <div className={styles["card-body"]}>
-        <h4>{movie.original_title}</h4>
+        <h4>
+          {
+            (movie.original_title.length > 30)
+              ? movie.original_title.substring(0, 25) + '...'
+              : movie.original_title
+          }
+        </h4>
         <p>{movie.release_date}</p>
 
         <section className={styles["movie-stats"]}>
-          <CircularRating />
+          <CircularRating rating={movie.vote_average} />
           <LikeButton />
           <SaveButton />
         </section>
