@@ -9,11 +9,14 @@ import 'swiper/css';
 // Circular-progress-bar styles
 import 'react-circular-progressbar/dist/styles.css';
 import { MoviesProvider } from './context/MoviesProvider';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <MoviesProvider>
-      <App />
-    </MoviesProvider>
+    <BrowserRouter>
+      <MoviesProvider>
+        <App />
+      </MoviesProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )

@@ -1,7 +1,7 @@
-import { HomePage } from "./pages";
+import { Navigation } from "./routes/Navigation";
 
 function App() {
-  return <HomePage />;
+  return <Navigation />;
 }
 
 export default App;
